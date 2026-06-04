@@ -15,7 +15,7 @@ from typing import Optional
 
 import cv2
 
-from .config import config
+from config import config
 from .input.frame_source import CameraFrameSource, CameraOpenError
 from .recognition.mediapipe_recognizer import MediaPipePoseRecognizer
 from .output.base import NullOutputHandler, OutputHandlerBase

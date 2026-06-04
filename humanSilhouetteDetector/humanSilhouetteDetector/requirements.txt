@@ -1,4 +1,4 @@
-# 動作確認済みの目安バージョン。再現性確保のため venv での利用を推奨します。
+# Verified versions. Using venv is recommended for reproducibility.
 flask>=3.0
 opencv-python>=4.8
 mediapipe>=0.10.9

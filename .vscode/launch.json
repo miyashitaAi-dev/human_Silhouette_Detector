@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run app.py (Web Server)",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "C:/Users/notar/anaconda3/envs/silhouette/python.exe",
+            "program": "${workspaceFolder}/humanSilhouetteDetector/humanSilhouetteDetector/app.py",
+            "cwd": "${workspaceFolder}/humanSilhouetteDetector/humanSilhouetteDetector",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run main.py (Local Window)",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "C:/Users/notar/anaconda3/envs/silhouette/python.exe",
+            "program": "${workspaceFolder}/humanSilhouetteDetector/humanSilhouetteDetector/main.py",
+            "cwd": "${workspaceFolder}/humanSilhouetteDetector/humanSilhouetteDetector",
+            "console": "integratedTerminal"
+        }
+    ]
+}

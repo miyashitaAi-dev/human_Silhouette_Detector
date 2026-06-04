@@ -26,13 +26,29 @@ Web カメラ映像から人物を検出し、その輪郭（シルエット）�
 
 ## セットアップ
 
-```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+**前提:** [Anaconda](https://www.anaconda.com/download) または Miniconda がインストール済みであること。
+
+### 自動セットアップ（推奨）
+
+PowerShell で以下を実行します:
+
+```powershell
+.\setup.ps1
+```
+
+conda 環境 `silhouette` の作成と依存パッケージのインストールを自動で行います。
+
+### 手動セットアップ
+
+```powershell
+conda create -n silhouette python=3.11 -y
+conda activate silhouette
 pip install -r requirements.txt
 ```
 
-モデルファイルを配置します（`models/README.md` 参照）:
+### モデルファイルの配置
+
+`models/README.md` の手順に従い、以下に配置してください:
 
 ```
 models/pose_landmarker_lite.task
@@ -40,16 +56,20 @@ models/pose_landmarker_lite.task
 
 ## 実行
 
+```powershell
+conda activate silhouette
+```
+
 Web 配信（主たる提供形態）:
 
-```bash
+```powershell
 python app.py
 # ブラウザで http://localhost:5000 を開く
 ```
 
 ローカルウィンドウ表示（開発時の補助。'q' で終了）:
 
-```bash
+```powershell
 python main.py
 ```
 
