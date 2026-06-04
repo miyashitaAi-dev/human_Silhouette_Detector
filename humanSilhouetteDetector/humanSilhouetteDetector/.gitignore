@@ -8,6 +8,11 @@ env/
 # Model files (download separately; see models/README.md)
 models/*.task
 
+# PyInstaller build output
+dist/
+build/
+*.spec.bak
+
 # OS / editor
 .DS_Store
 .idea/
