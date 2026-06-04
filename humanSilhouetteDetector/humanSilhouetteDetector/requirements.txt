@@ -1,0 +1,5 @@
+# 動作確認済みの目安バージョン。再現性確保のため venv での利用を推奨します。
+flask>=3.0
+opencv-python>=4.8
+mediapipe>=0.10.9
+numpy>=1.24

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Silhouette Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="console">
+    <header class="bar">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="title">HUMAN&nbsp;SILHOUETTE&nbsp;DETECTOR</span>
+      </div>
+      <div class="status">
+        <span class="live">LIVE</span>
+        <span class="sub">MediaPipe&nbsp;Pose&nbsp;/&nbsp;MJPEG</span>
+      </div>
+    </header>
+
+    <main class="stage">
+      <div class="frame">
+        <img src="{{ url_for('video_feed') }}" alt="camera stream" />
+        <div class="reticle"></div>
+      </div>
+    </main>
+
+    <footer class="meta">
+      <span>輪郭セグメンテーション表示中</span>
+      <span>映像は処理後に破棄（保存・送信なし）</span>
+    </footer>
+  </div>
+</body>
+</html>

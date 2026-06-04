@@ -1,0 +1,106 @@
+:root {
+  --bg: #0e1116;
+  --panel: #161b22;
+  --line: #232a33;
+  --ink: #d7dde5;
+  --muted: #6b7682;
+  --accent: #ffc857;
+  --live: #4ade80;
+  --mono: "DejaVu Sans Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background:
+    radial-gradient(circle at 50% 0%, #1a212b 0%, var(--bg) 60%);
+  color: var(--ink);
+  font-family: var(--mono);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.console {
+  width: 100%;
+  max-width: 860px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #1b222c, #161b22);
+}
+
+.brand { display: flex; align-items: center; gap: 10px; }
+
+.dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 10px var(--live);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+
+.title { letter-spacing: 2px; font-size: 13px; color: var(--ink); }
+
+.status { text-align: right; line-height: 1.4; }
+.live {
+  display: inline-block;
+  font-size: 11px; letter-spacing: 2px;
+  color: var(--live);
+  border: 1px solid var(--live);
+  border-radius: 3px;
+  padding: 1px 6px;
+}
+.status .sub { display: block; font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+.stage { padding: 18px; }
+
+.frame {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 4 / 3;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* 四隅のレチクル装飾 */
+.reticle { position: absolute; inset: 10px; pointer-events: none; }
+.reticle::before, .reticle::after {
+  content: "";
+  position: absolute;
+  width: 18px; height: 18px;
+  border: 2px solid var(--accent);
+  opacity: .7;
+}
+.reticle::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+.reticle::after { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--muted);
+}

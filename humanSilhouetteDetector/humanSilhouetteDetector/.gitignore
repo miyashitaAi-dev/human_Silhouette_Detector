@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Model files (download separately; see models/README.md)
+models/*.task
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
