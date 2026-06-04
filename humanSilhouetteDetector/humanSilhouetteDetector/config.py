@@ -5,7 +5,22 @@
 色は OpenCV の BGR 順である点に注意してください。
 """
 
+import os
+import sys
 from dataclasses import dataclass, field
+
+
+def _resource_path(relative: str) -> str:
+    """PyInstaller exe と通常実行の両方でリソースパスを解決する。
+
+    PyInstaller (onedir) では同梱ファイルが sys._MEIPASS (_internal/) に展開される。
+    通常実行では config.py があるディレクトリを基準にする。
+    """
+    if getattr(sys, 'frozen', False):
+        base = sys._MEIPASS
+    else:
+        base = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base, relative)
 
 
 @dataclass
@@ -16,8 +31,10 @@ class Config:
     frame_height: int = 480
 
     # --- 認識モデル (MediaPipe Pose Landmarker) ---
-    # 軽量版モデル。models/README.md の手順で取得して配置する。
-    model_path: str = "models/pose_landmarker_lite.task"
+    # exe / 通常実行の両方で正しいパスに解決される。
+    model_path: str = field(
+        default_factory=lambda: _resource_path("models/pose_landmarker_lite.task")
+    )
     num_poses: int = 2                       # 控えめな初期値（お任せ確定）
     min_pose_detection_confidence: float = 0.5
     output_segmentation_masks: bool = True   # 輪郭抽出に必須

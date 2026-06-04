@@ -67,12 +67,23 @@ class CameraWorker:
                 time.sleep(0.5)
             return
 
-        recognizer = MediaPipePoseRecognizer(
-            model_path=config.model_path,
-            num_poses=config.num_poses,
-            min_detection_confidence=config.min_pose_detection_confidence,
-            output_segmentation_masks=config.output_segmentation_masks,
-        )
+        try:
+            recognizer = MediaPipePoseRecognizer(
+                model_path=config.model_path,
+                num_poses=config.num_poses,
+                min_detection_confidence=config.min_pose_detection_confidence,
+                output_segmentation_masks=config.output_segmentation_masks,
+            )
+        except Exception as e:
+            print(f"[ERROR] モデルの読み込みに失敗しました: {e}")
+            print(f"[ERROR] model_path={config.model_path}")
+            msg = f"Model load failed: {type(e).__name__}"
+            placeholder = make_placeholder(config.frame_width, config.frame_height, msg)
+            while self._running:
+                self._store(placeholder)
+                time.sleep(0.5)
+            source.release()
+            return
         start_ts = time.monotonic()
         prev = time.monotonic()
         try:
