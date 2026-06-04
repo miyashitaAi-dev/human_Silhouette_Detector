@@ -77,13 +77,37 @@ python main.py
 `config.py` で解像度・検出最大人数・しきい値・JPEG 画質などを調整できます。
 初期値は控えめに設定しており、実機での性能計測のうえ調整してください。
 
+## スタンドアローン exe のビルド（配布用）
+
+Python 不要の `.exe` として配布するには PyInstaller を使います。
+
+```powershell
+conda activate silhouette
+pip install pyinstaller
+pyinstaller build.spec --noconfirm
+```
+
+生成物は `dist/HumanSilhouetteDetector/` フォルダです。
+このフォルダを zip にして渡すだけで、受け取った人は Python なしで動かせます。
+
+```
+dist/HumanSilhouetteDetector/
+├── launch.bat                    ← ダブルクリックで起動
+├── HumanSilhouetteDetector.exe
+└── _internal/
+    └── models/                   ← .task ファイルをここに配置
+```
+
+詳細は [Wiki: Distribution](https://github.com/miyashitaAi-dev/human_Silhouette_Detector/wiki/Distribution) を参照。
+
 ## ドキュメント
-プロジェクトの設計・テスト・運用documentは `docs/` にあります。
+プロジェクトの設計・テスト・運用ドキュメントは `docs/` にあります。
 
 - [docs/PROJECT_DESIGN.md](docs/PROJECT_DESIGN.md) — 要件定義〜テストの統合設計書
 - [docs/TEST_PLAN.md](docs/TEST_PLAN.md) — テスト仕様書 兼 結果報告書
 - [docs/OPERATIONS.md](docs/OPERATIONS.md) — 運用・保守ガイド
 - [docs/PROJECT_CLOSEOUT.md](docs/PROJECT_CLOSEOUT.md) — プロジェクト総括
+- [docs/TUTORIAL.md](docs/TUTORIAL.md) — コードリーディング解説
 
 ## ライセンス
 依存物のライセンスは `THIRD_PARTY_LICENSES.md` を参照してください。
